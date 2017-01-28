@@ -3,7 +3,6 @@ import webapp2
 import logging
 import calendar
 import uuid
-# import nltk
 
 from google.appengine.ext.webapp import template
 from google.appengine.api import users             
@@ -13,7 +12,7 @@ from google.appengine.api import search
 from google.appengine.ext import db 
 from google.appengine.ext import blobstore   
   
-from google.appengine.ext.webapp import blobstore_handlers     
+from google.appengine.ext.webapp import blobstore_handlers
 
 from datetime import date
 from datetime import time
@@ -59,7 +58,6 @@ class AboutHandler(webapp2.RequestHandler) :
         logging.debug('AboutHandler GET request: ' + str(self.request))
         template_values = {
             'page_title' : "About Sock Market",
-            'current_year' : date.today().year
         }
 
         renderTemplate(self.response, 'about.html', template_values)
