@@ -59,8 +59,7 @@ class AboutHandler(webapp2.RequestHandler) :
         logging.debug('AboutHandler GET request: ' + str(self.request))
         template_values = {
             'page_title' : "About Sock Market",
-            'current_year' : date.today().year,
-            'user' : getCurrentUserData()
+            'current_year' : date.today().year
         }
 
         renderTemplate(self.response, 'about.html', template_values)
