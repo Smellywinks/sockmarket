@@ -3,6 +3,7 @@ import webapp2
 import logging
 import calendar
 import uuid
+import stockquote
 
 from google.appengine.ext.webapp import template
 from google.appengine.api import users             
@@ -82,9 +83,12 @@ class IntroHandler(webapp2.RequestHandler):
         """Intro page GET request handler"""
         logging.debug('IntroHandler GET request: ' + str(self.request))
 
+        quote = stockquote.get_quote('goog')
+
         template_values = {
             'page_title' : "Sock Market",
-            'current_year' : date.today().year
+            'current_year' : date.today().year,
+            'stock_quote' : quote
         }
             
         renderTemplate(self.response, 'index.html', template_values)
