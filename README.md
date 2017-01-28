@@ -1,4 +1,4 @@
-chalkboard
+sockmarket
 ==========
 
-Pitt CS1520 Chalkboard Project
+Some app that I want to make. It's not done yet.
