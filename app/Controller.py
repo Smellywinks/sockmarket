@@ -3,7 +3,7 @@ import webapp2
 import logging
 import calendar
 import uuid
-import nltk
+# import nltk
 
 from google.appengine.ext.webapp import template
 from google.appengine.api import users             
