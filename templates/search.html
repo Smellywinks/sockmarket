@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+	{% block bodycontent %}
+		<div id="bodyarea">
+			<div id="introText" class="introColumn">
+				<h1 style="font-size: 3em;">Companies Pages: </h1>
+                {% for search in search_list %}
+                <h2><a style="color: #66CCFF" href = {{search.url}}>{{search.course_name}}</a></h2>
+                <h3>Created by: {{search.instructor}}
+                </h3>
+                {% endfor %}				
+                <h2><p><b><center>Search again: </center></b></p></h2>
+			
+				<form style="text-align: right;" method="post" action="/search">
+					Company Name: <input type="text" name="course" value ="{{search.course_name}}"><br>
+					Supervisor Name: <input type="text" name="instructor" value = "{{search.course_name}}"><br>
+					Supervisor Email: <input type="text" name="email"><br>
+					<br>
+					<input type="submit" value ="View Tasks">
+				</form>
+                </b>
+                
+			</div>
+             </div>
+         </div>
+    {% endblock %}}

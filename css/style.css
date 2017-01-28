@@ -1,0 +1,162 @@
+	@font-face { /* Load the new "chalk" font */
+		font-family: ChalkLetters;
+		src: url(../fonts/Sketchy.ttf); 
+		
+		font-family: Tidy;
+		src: url(../fonts/Comfortaa_Thin.ttf);
+	}
+	 
+	body {
+		background-color: #5CAD85;
+		font-family: Tidy, ChalkLetters, arial, sans-serif;
+		color: #ffffff;
+	}
+
+	/*** Main Area ***/
+	
+	#bodyarea {
+		background-color: #5CAD85;
+		width: 85%;
+		padding: 30px 0px;
+		margin: 125px auto;
+		box-shadow: 0px 10px 50px 25px #ffffff;
+		color: #ffffff;
+		text-align: center;
+		position: relative;
+		display: block;
+		border-radius: 10px;
+		max-width: 700px;
+		
+	}
+
+	#bodyarea div {
+		display: inline-block;
+	}
+
+	.introColumn {
+		max-width: 650px;
+		vertical-align: top;
+		margin: 1em;
+	}
+
+	#introText p {
+		text-align: left;
+	}
+	
+    /*** Footer ***/
+
+   	#footer {
+		margin-top: 30px;
+		text-align: center;
+	}
+	
+	a:link {
+	    color: #FFFFFF;
+	}
+	
+	a:visited {
+	    color: #FFFFFF;
+	}
+	
+	a:hover {
+	    color: #FFFFFF;
+		text-shadow: 0 0 12px #ffffff;
+	}
+	
+	a:active {
+	    color: #FFFFFF;
+	}
+    
+    button{
+        font-size: 20;
+    }
+    
+    td.calendar{
+        font-size : 30;
+        color : ffffff;
+    }
+    
+    td.calendar_weeks{
+        font-size : 30;
+        color : #ffffff;
+    }
+    
+    td.event{
+        font-size : 30;
+        color : #66CCFF;
+    }
+    a.event{
+        font-size : 30;
+        color : #66CCFF;
+    }
+
+
+	/**** 404/Error ****/
+
+	.smallbody {
+		text-align: center;
+		background-color: #5CAD85;
+		box-shadow: 0px 10px 50px 25px #ffffff;
+		padding: 30px 0px;
+		color: #ffffff;
+		position: relative;
+		display: block;
+		border-radius: 10px;
+		max-width: 450px;
+		vertical-align: top;
+		margin: 125px auto;
+	}
+
+	#body404 h1 {
+		display: block;
+		position: relative;
+	}
+
+	/**** Header ****/
+	#header{
+		height: 20px;
+		background-color: #ffffff;
+		color: #ffffff;
+		position: relative;
+		display: block;
+		font-size: 35px;
+		padding: 25px 0px 0px 0px;
+		margin: 0px auto;
+		box-shadow: 0px 0px 70px 50px #ffffff;
+	}
+	
+	#logo{
+		margin-top: -10px; 
+		display: inline-block;
+		float: left;
+		margin-left: 15px;
+		text-decoration: none;
+		text-shadow: 0 0 25px #5CAD85;
+	}
+	
+	#logo a:hover{
+		text-shadow: 0 0 25px #5CAD85;
+		text-decoration: none;
+	}
+	
+	#logo a {
+		text-decoration: none;
+	}
+	
+	#loginDiv {
+		margin-top: 50px; 
+		display: inline-block;
+		float: right;
+		margin-right: 15px;
+		text-decoration: none;
+	}
+	
+	#loginDiv a:hover{
+		text-shadow: 0 0 25px #5CAD85;
+		text-decoration: none;
+		
+	}
+	
+	#loginDiv a {
+		text-decoration: none;
+	}
