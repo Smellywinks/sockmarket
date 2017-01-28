@@ -105,7 +105,6 @@ routeHandlers = [
     (r'/about', AboutHandler),
     (r'/error', ErrorHandler),
     (r'/', IntroHandler),
-    (r'/search', SearchHandler),
     (r'/.*', ErrorHandler)
 ]
 
