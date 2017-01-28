@@ -16,6 +16,3 @@ handlers:
 - url: /.*
   script: app.Controller.application
 
-libraries:
-- name: numpy
-  version: "1.6.1"
