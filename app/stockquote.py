@@ -9,8 +9,8 @@ def fetchPreMarket(symbol, exchange):
     content = u.read()
     data = json.loads(content[3:])
     info = data[0]
-    t = str(info["elt"])    # time stamp
-    l = float(info["l"])    # close price (previous trading day)
-    p = float(info["el"])   # stock price in pre-market (after-hours)
+    #t = str(info["elt"])    # time stamp
+    #l = float(info["l"])    # close price (previous trading day)
+    #p = float(info["el"])   # stock price in pre-market (after-hours)
     #return (t,l,p)
     return info
