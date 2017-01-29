@@ -83,12 +83,12 @@ class IntroHandler(webapp2.RequestHandler):
         """Intro page GET request handler"""
         logging.debug('IntroHandler GET request: ' + str(self.request))
 
-        quote = stockquote.get_quote('goog')
+        info = stockquote.fetchPreMarket("NUGT", "NYSEARCA")
 
         template_values = {
             'page_title' : "Sock Market",
             'current_year' : date.today().year,
-            'stock_quote' : quote
+            'stock_info' : info
         }
             
         renderTemplate(self.response, 'index.html', template_values)

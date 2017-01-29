@@ -1,12 +1,16 @@
-import urllib
-import re
+import urllib2
+import json
+import time
 
-def get_quote(symbol):
-    base_url = 'http://finance.google.com/finance?q='
-    content = urllib.urlopen(base_url + symbol).read()
-    m = re.search('id="ref_304466804484872_l".*?>(.*?)<', content)
-    if m:
-        quote = m.group(1)
-    else:
-        quote = 'no quote available for: ' + symbol
-    return quote
+def fetchPreMarket(symbol, exchange):
+    link = "http://finance.google.com/finance/info?client=ig&q="
+    url = link+"%s:%s" % (exchange, symbol)
+    u = urllib2.urlopen(url)
+    content = u.read()
+    data = json.loads(content[3:])
+    info = data[0]
+    t = str(info["elt"])    # time stamp
+    l = float(info["l"])    # close price (previous trading day)
+    p = float(info["el"])   # stock price in pre-market (after-hours)
+    #return (t,l,p)
+    return info
