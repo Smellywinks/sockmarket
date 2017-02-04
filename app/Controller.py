@@ -88,7 +88,9 @@ class IntroHandler(webapp2.RequestHandler):
         template_values = {
             'page_title' : "Sock Market",
             'current_year' : date.today().year,
-            'stock_info' : info
+            'stock_info' : info,
+            'stock_ticker' : '*',
+            'stock_value' : '*'
         }
             
         renderTemplate(self.response, 'index.html', template_values)
@@ -99,12 +101,39 @@ class IntroHandler(webapp2.RequestHandler):
         
         return self.redirect(uri='/error', code=307)
         
-        
+class StockInfoHandler(webapp2.RequestHandler):
+    """ReqestHandler for Get Info button on into page"""
+
+    def get(self):
+        #stock info should not be handled as a GET request ever (no stock info has been posted)
+        logging.debug('StockInfoHandler GET request: ' + str(self.request) + id)
+        self.redirect('/error')
+
+    def post(self):
+        sym = self.request.get('in_ticker')
+        exch = self.request.get('in_exchange')
+
+        info = stockquote.fetchPreMarket(sym, exch)
+
+        t = info["t"]
+        v = info["l_cur"]
+
+        template_values = {
+            'page_title': "Sock Market",
+            'current_year': date.today().year,
+            'stock_info': info,
+            'stock_ticker': t,
+            'stock_value': v
+        }
+
+        renderTemplate(self.response, 'index.html', template_values)
+
 # list of URI/Handler routing tuples
 # the URI is a regular expression beginning with root '/' char
 routeHandlers = [
     (r'/about', AboutHandler),
     (r'/error', ErrorHandler),
+    (r'/getStockInfo', StockInfoHandler),
     (r'/', IntroHandler),
     (r'/.*', ErrorHandler)
 ]

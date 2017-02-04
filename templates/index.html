@@ -6,7 +6,18 @@
 				
 			<p>Sock Market is a secret project...go away for now (it's not done).</p>
 
-			<p>{{stock_info}}</p>
+			<h2><u>Search for a sock</u></h2>
+			<form method="post" action="/getStockInfo">
+				Symbol: <input type="text" name="in_ticker"><br/>
+				Exchange: <input type="text" name="in_exchange"><br/>
+				<input type="submit" value="Get Info">
+			</form>
+
+			<p>{{stock_ticker}}</p>
+			<br/>
+			<p>{{stock_value}}</p>
+			</br>
+			<p id="stock_info">{{stock_info}}</p>
 
 			</div>
 		</div>
