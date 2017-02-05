@@ -4,6 +4,8 @@ import logging
 import calendar
 import uuid
 import stockquote
+import json
+import re
 
 from google.appengine.ext.webapp import template
 from google.appengine.api import users             
@@ -110,8 +112,9 @@ class StockInfoHandler(webapp2.RequestHandler):
         self.redirect('/error')
 
     def post(self):
-        sym = self.request.get('in_ticker')
-        exch = self.request.get('in_exchange')
+        data = json.loads(self.request.body)
+        sym = data["ticker"]
+        exch = data["exchange"]
 
         info = stockquote.fetchPreMarket(sym, exch)
 
@@ -119,14 +122,17 @@ class StockInfoHandler(webapp2.RequestHandler):
         v = info["l_cur"]
 
         template_values = {
-            'page_title': "Sock Market",
-            'current_year': date.today().year,
             'stock_info': info,
             'stock_ticker': t,
             'stock_value': v
         }
 
-        renderTemplate(self.response, 'index.html', template_values)
+        basepath = os.path.split(os.path.dirname(__file__))  # extract the base path, since we are in the "app" folder instead of the root folder
+        path = os.path.join(basepath[0], 'templates/' + 'stockInfo')
+        message = template.render(path, template_values)
+
+        self.response.write(json.dumps({"message" : message}))
+
 
 # list of URI/Handler routing tuples
 # the URI is a regular expression beginning with root '/' char
