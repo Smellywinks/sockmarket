@@ -90,9 +90,7 @@ class IntroHandler(webapp2.RequestHandler):
         template_values = {
             'page_title' : "Sock Market",
             'current_year' : date.today().year,
-            'stock_info' : info,
-            'stock_ticker' : '*',
-            'stock_value' : '*'
+            'stock_info' : info
         }
             
         renderTemplate(self.response, 'index.html', template_values)
@@ -112,16 +110,19 @@ class StockInfoHandler(webapp2.RequestHandler):
         self.redirect('/error')
 
     def post(self):
+        logging.debug('StockInfoHandler POST request: ' + str(self.request) + id)
         data = json.loads(self.request.body)
         sym = data["ticker"]
         exch = data["exchange"]
 
+
+        logging.debug("Looking up " + exch +":"+ sym +" market data")
         info = stockquote.fetchPreMarket(sym, exch)
 
         t = info["t"]
         v = info["l_cur"]
 
-        self.response.write(json.dumps({"stock_ticker" : t}, {"stock_price" : v}))
+        self.response.out.write(json.dumps({"stock_ticker" : t}, {"stock_price" : v}))
 
 
 # list of URI/Handler routing tuples
