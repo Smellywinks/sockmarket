@@ -122,7 +122,7 @@ class StockInfoHandler(webapp2.RequestHandler):
         t = info["t"]
         v = info["l_cur"]
 
-        self.response.out.write(json.dumps({"stock_ticker" : t}, {"stock_price" : v}))
+        self.response.out.write(json.dumps({'stock_ticker' : t, 'stock_price' : v}))
 
 
 # list of URI/Handler routing tuples

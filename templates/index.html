@@ -14,27 +14,21 @@
                 </form>
 
                 <script>
-                    function getInfo()
-                    {
+                    function getInfo(){
                         var inTick = $('#in_ticker').val();
                         var inExch = $('#in_exchange').val();
 
-                        $.ajax
-                        ({
+                        $.ajax({
                             type: "POST",
                             url: "/getStockInfo",
                             dataType: 'json',
-                            data: JSON.stringify
-                            (
-                                { "ticker": inTick},
-                                {"exchange": inExch}
+                            data: JSON.stringify({
+                                "ticker": inTick,
+                                "exchange": inExch}
                             )
                         })
 
-                        .done
-                        (
-                            function(infoResponse)
-                            {
+                        .done(function(infoResponse){
                                 $('#tick').text(infoResponse['stock_ticker'];
                                 $('#price').text(infoResponse['stock_price'];
                             }
