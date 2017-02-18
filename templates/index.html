@@ -15,8 +15,8 @@
 
                 <script>
                     function getInfo(){
-                        var inTick = $('#in_ticker').val();
-                        var inExch = $('#in_exchange').val();
+                        var inTick = $('#in_ticker').value;
+                        var inExch = $('#in_exchange').value;
 
                         $.ajax({
                             type: "POST",
@@ -27,12 +27,11 @@
                                 "exchange": inExch}
                             )
                         })
-
                         .done(function(infoResponse){
                                 $('#tick').text(infoResponse['stock_ticker'];
                                 $('#price').text(infoResponse['stock_price'];
                             }
-                        )
+                        );
                     }
                 </script>
             </div>
