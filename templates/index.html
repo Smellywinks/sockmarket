@@ -25,25 +25,26 @@
                             url: "/getStockInfo",
                             dataType: 'json',
                             data: JSON.stringify
-                            ({
-                                "ticker": inTick,
-                                "exchange": inExch
-                            })
+                            (
+                                { "ticker": inTick},
+                                {"exchange": inExch}
+                            )
                         })
 
                         .done
                         (
                             function(infoResponse)
                             {
-                                $("#stockInfo).html(infoResponse.message);
+                                $('#tick').text(infoResponse['stock_ticker'];
+                                $('#price').text(infoResponse['stock_price'];
                             }
                         )
                     }
                 </script>
             </div>
-            <div id="stockInfo">
-                <p>{{stock_ticker}} </p>
-                <p>{{stock_value}}</p>
+            <div>
+                <p>Ticker: </p><p id="tick" value="*"></p>
+                <p>Price: </p><p id="price" value="*"></p>
                 </br>
                 <p id="stock_info">{{stock_info}}</p>
 			</div>

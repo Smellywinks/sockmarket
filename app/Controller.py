@@ -121,17 +121,7 @@ class StockInfoHandler(webapp2.RequestHandler):
         t = info["t"]
         v = info["l_cur"]
 
-        template_values = {
-            'stock_info': info,
-            'stock_ticker': t,
-            'stock_value': v
-        }
-
-        basepath = os.path.split(os.path.dirname(__file__))  # extract the base path, since we are in the "app" folder instead of the root folder
-        path = os.path.join(basepath[0], 'templates/' + 'stockInfo')
-        message = template.render(path, template_values)
-
-        self.response.write(json.dumps({"message" : message}))
+        self.response.write(json.dumps({"stock_ticker" : t}, {"stock_price" : v}))
 
 
 # list of URI/Handler routing tuples
